@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+@theme {
+  --color-accent-50: var(--color-accent-50);
+  --color-accent-100: var(--color-accent-100);
+  --color-accent-500: var(--color-accent-500);
+  --color-accent-600: var(--color-accent-600);
+  --color-accent-700: var(--color-accent-700);
+  --color-accent-gradient-from: var(--color-accent-gradient-from);
+  --color-accent-gradient-to: var(--color-accent-gradient-to);
+  
+  /* Translucent highlights */
+  --color-accent-dark-bg: var(--color-accent-dark-bg);
+  --color-accent-ring: var(--color-accent-ring);
+  --color-accent-light-bg: var(--color-accent-light-bg);
+}
+
+@variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --color-accent-50: #faf7f0;
+    --color-accent-100: #f0ebd8;
+    --color-accent-500: #a27b5c;
+    --color-accent-600: #7f5539;
+    --color-accent-700: #5c3d2e;
+    --color-accent-gradient-from: #a27b5c;
+    --color-accent-gradient-to: #5c3d2e;
+    --color-accent-dark-bg: rgba(127, 85, 57, 0.15);
+    --color-accent-ring: rgba(127, 85, 57, 0.3);
+    --color-accent-light-bg: #faf7f0;
+  }
+  
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 9999px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* Slide in animation for chat messages */
+@keyframes message-slide {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-message {
+  animation: message-slide 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Pulsing dot for online status */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+.presence-pulse {
+  animation: pulse-ring 2s infinite;
+}
+
+/* --- 3D LANDING PAGE EFFECTS --- */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+@keyframes float-rotate {
+  0% {
+    transform: rotateX(12deg) rotateY(-15deg) translateY(0px);
+  }
+  50% {
+    transform: rotateX(18deg) rotateY(-8deg) translateY(-15deg);
+  }
+  100% {
+    transform: rotateX(12deg) rotateY(-15deg) translateY(0px);
+  }
+}
+
+.animate-3d-scene {
+  transform-style: preserve-3d;
+  animation: float-rotate 6s ease-in-out infinite;
+}
+
+/* Float animations for background shapes */
+@keyframes float-slow {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
+  100% { transform: translateY(0px) rotate(360deg); }
+}
+
+.animate-float-slow {
+  animation: float-slow 15s infinite linear;
+}
+
+@keyframes float-medium {
+  0% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-15px) scale(1.05); }
+  100% { transform: translateY(0px) scale(1); }
+}
+
+.animate-float-medium {
+  animation: float-medium 8s infinite ease-in-out;
+}
